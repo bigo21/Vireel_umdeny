@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vireel · Umdeny — Écosystème Digital Africain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS RESET & VARIABLES ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080c10;
+      --bg2: #0d1318;
+      --bg3: #111820;
+      --border: rgba(255,255,255,0.07);
+      --accent: #f97316;
+      --accent2: #06b6d4;
+      --accent3: #a78bfa;
+      --text: #e8edf2;
+      --muted: #7a8898;
+      --card: #0f1923;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #000; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-head); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--accent);
+    }
+    h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.15; }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted); max-width: 540px; margin-bottom: 48px;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.3s;
+    }
+    .nav-logo {
+      font-family: var(--font-head); font-weight: 800; font-size: 1.3rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; color: var(--muted);
+      transition: color 0.2s; letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #000 !important;
+      padding: 8px 20px; border-radius: 6px; font-weight: 700 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .burger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(249,115,22,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(6,182,212,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(167,139,250,0.04) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3);
+      padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+      color: var(--accent); margin-bottom: 28px; letter-spacing: 0.05em;
+    }
+    .hero-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero-title .line2 { color: var(--accent); display: block; }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted); max-width: 560px; margin-bottom: 40px;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 72px; }
+    .btn {
+      padding: 13px 28px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+      transition: all 0.2s; letter-spacing: 0.02em; border: none; font-family: var(--font-body);
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,0.05); }
+    .btn-ghost { background: rgba(6,182,212,0.1); color: var(--accent2); border: 1px solid rgba(6,182,212,0.2); }
+    .btn-ghost:hover { background: rgba(6,182,212,0.15); transform: translateY(-2px); }
+    .hero-counters {
+      display: flex; flex-wrap: wrap; gap: 0;
+      border: 1px solid var(--border); border-radius: 16px;
+      background: rgba(255,255,255,0.02); overflow: hidden; max-width: 640px;
+    }
+    .counter-item {
+      flex: 1; min-width: 160px; padding: 28px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .counter-item:last-child { border-right: none; }
+    .counter-num {
+      font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800; color: var(--accent); display: block; line-height: 1;
+    }
+    .counter-label { font-size: 0.8rem; color: var(--muted); margin-top: 6px; font-weight: 400; }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%; aspect-ratio: 4/5; border-radius: 20px;
+      background: linear-gradient(135deg, var(--bg3), var(--card));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; position: relative; overflow: hidden;
+    }
+    .about-img-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.15), transparent 60%);
+    }
+    .about-tag {
+      position: absolute; bottom: -16px; right: -16px;
+      background: var(--accent); color: #000;
+      font-family: var(--font-head); font-weight: 800;
+      padding: 12px 20px; border-radius: 12px;
+      font-size: 0.85rem; line-height: 1.2;
+    }
+    .about-content p { color: var(--muted); margin-bottom: 16px; font-weight: 300; }
+    .about-content p strong { color: var(--text); font-weight: 600; }
+    .about-stats {
+      display: flex; gap: 32px; margin-top: 32px; padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .about-stat-num {
+      font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--accent);
+    }
+    .about-stat-label { font-size: 0.8rem; color: var(--muted); }
+
+    /* ===== PROJECTS ===== */
+    #projects { background: var(--bg); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; transition: all 0.3s;
+      position: relative; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--card-accent, var(--accent)); opacity: 0; transition: opacity 0.3s;
+    }
+    .project-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
+    .project-card:hover::before { opacity: 1; }
+    .project-emoji { font-size: 2.2rem; margin-bottom: 16px; }
+    .project-name { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; margin-bottom: 8px; }
+    .project-desc { font-size: 0.875rem; color: var(--muted); flex: 1; margin-bottom: 20px; line-height: 1.6; }
+    .project-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 3px 10px; border-radius: 4px; margin-bottom: 16px; text-transform: uppercase;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25);
+      color: var(--accent); padding: 9px 18px; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 600; transition: all 0.2s; align-self: flex-start;
+    }
+    .project-link:hover { background: rgba(249,115,22,0.2); transform: translateX(4px); }
+
+    /* ===== FORMATION ===== */
+    #formation { background: var(--bg2); }
+    .formation-tabs { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); font-family: var(--font-body);
+      font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .formation-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start;
+    }
+    .formation-title { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+    .formation-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; line-height: 1.7; }
+    .formation-modules { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .module-pill {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; color: var(--muted);
+    }
+    .formation-price-box { text-align: center; }
+    .formation-price {
+      font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; color: var(--accent);
+    }
+    .formation-price-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .badge-free {
+      background: rgba(6,182,212,0.15); color: var(--accent2);
+      border: 1px solid rgba(6,182,212,0.3);
+      padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+      display: inline-block; margin-bottom: 12px;
+    }
+
+    /* ===== COWORKING ===== */
+    #coworking { background: var(--bg); }
+    .coworking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .plans-grid { display: flex; flex-direction: column; gap: 16px; }
+    .plan-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px 24px; transition: all 0.2s; cursor: default;
+    }
+    .plan-card.featured { border-color: var(--accent); background: rgba(249,115,22,0.05); }
+    .plan-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .plan-name { font-family: var(--font-head); font-weight: 700; font-size: 1rem; }
+    .plan-badge {
+      background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 800;
+      padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em;
+    }
+    .plan-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; }
+    .plan-pricing { display: flex; align-items: baseline; gap: 10px; }
+    .plan-price-promo { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+    .plan-price-old { font-size: 0.9rem; color: var(--muted); text-decoration: line-through; }
+    .form-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px;
+    }
+    .form-title { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 14px; color: var(--text);
+      font-family: var(--font-body); font-size: 0.875rem; transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group input.error, .form-group select.error { border-color: #ef4444; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .error-msg { font-size: 0.75rem; color: #ef4444; margin-top: 4px; display: none; }
+    .error-msg.show { display: block; }
+    .form-success {
+      display: none; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3);
+      border-radius: 10px; padding: 20px; text-align: center;
+      color: var(--accent2); font-weight: 600;
+    }
+    .form-success.show { display: block; }
+
+    /* ===== QUIZ ===== */
+    #quiz { background: var(--bg2); }
+    .quiz-wrap {
+      max-width: 680px; margin: 0 auto;
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 48px;
+    }
+    .quiz-progress-bar {
+      height: 4px; background: var(--bg3); border-radius: 2px; margin-bottom: 40px; overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .quiz-q-num { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.08em; font-weight: 600; }
+    .quiz-question { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 28px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-option {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 15px 20px; cursor: pointer; transition: all 0.2s;
+      font-size: 0.9rem; display: flex; align-items: center; gap: 12px;
+    }
+    .quiz-option:hover { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,0.05); }
+    .quiz-option.selected { border-color: var(--accent); background: rgba(249,115,22,0.1); color: var(--accent); }
+    .quiz-option-letter {
+      width: 28px; height: 28px; border-radius: 50%; border: 1px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
+    }
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+    .quiz-result { display: none; text-align: center; }
+    .quiz-result.show { display: block; }
+    .quiz-result-emoji { font-size: 4rem; margin-bottom: 16px; }
+    .quiz-result-title { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+    .quiz-result-desc { color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
+    .quiz-result-card {
+      background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 14px; padding: 24px; margin-bottom: 24px; text-align: left;
+    }
+    .quiz-result-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .quiz-result-reco { font-weight: 600; font-size: 1rem; }
+    #quiz-form { display: block; }
+
+    /* ===== RDV ===== */
+    #rdv { background: var(--bg); }
+    .rdv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .rdv-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 24px; text-align: center; transition: all 0.3s; display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+    }
+    .rdv-card:hover { border-color: var(--accent); transform: translateY(-4px); background: rgba(249,115,22,0.04); }
+    .rdv-emoji { font-size: 2.5rem; }
+    .rdv-name { font-family: var(--font-head); font-weight: 700; font-size: 1rem; }
+    .rdv-sub { font-size: 0.8rem; color: var(--muted); }
+    .rdv-btn {
+      margin-top: auto; width: 100%;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); padding: 9px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .rdv-btn:hover { background: var(--accent); border-color: var(--accent); color: #000; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand { }
+    .footer-logo { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; margin-bottom: 14px; }
+    .footer-logo span { color: var(--accent); }
+    .footer-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; transition: all 0.2s; background: var(--bg3);
+    }
+    .social-btn:hover { border-color: var(--accent); background: rgba(249,115,22,0.1); }
+    .footer-col h4 { font-family: var(--font-head); font-size: 0.85rem; font-weight: 700; margin-bottom: 16px; color: var(--text); letter-spacing: 0.05em; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.83rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-copy a { color: var(--accent); }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--bg); padding: 88px 24px 32px;
+      flex-direction: column; gap: 28px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-head); font-size: 1.5rem; font-weight: 700;
+      color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 20px;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { max-width: 320px; margin: 0 auto; }
+      .coworking-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .formation-card { grid-template-columns: 1fr; }
+      .quiz-wrap { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-counters { flex-direction: column; }
+      .counter-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .counter-item:last-child { border-bottom: none; }
+    }
+    @media (max-width: 480px) {
+      .section { padding: 64px 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .rdv-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== SCROLLTOP ===== */
+    #scrolltop {
+      position: fixed; bottom: 28px; right: 28px; z-index: 99;
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--accent); color: #000;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none;
+      transition: all 0.3s; border: none;
+    }
+    #scrolltop.show { opacity: 1; pointer-events: all; }
+    #scrolltop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Vireel <span>·</span> Umdeny</a>
+    <div class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#projects">Projets</a>
+      <a href="#formation">Formation</a>
+      <a href="#coworking">Coworking</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#rdv" class="nav-cta">Prendre RDV</a>
+    </div>
+    <div class="burger" id="burger" aria-label="Menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">À propos</a>
+    <a href="#projects" onclick="closeMobile()">Projets</a>
+    <a href="#formation" onclick="closeMobile()">Formation</a>
+    <a href="#coworking" onclick="closeMobile()">Coworking</a>
+    <a href="#quiz" onclick="closeMobile()">Quiz</a>
+    <a href="#rdv" onclick="closeMobile()">Prendre RDV →</a>
+  </div>
+
+  <!-- ========== SECTION 1 : HERO ========== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">🌍 Écosystème Digital pour l'Afrique</div>
+      <h1 class="hero-title">
+        Bâtissons l'Afrique
+        <span class="line2">Numérique</span>
+      </h1>
+      <p class="hero-sub">
+        Vireel / Umdeny — solutions fintech, e-commerce, formation et coworking
+        pensées pour les entrepreneurs africains depuis 2019.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">Découvrir nos projets →</a>
+        <a href="#rdv" class="btn btn-outline">Prendre un RDV</a>
+        <a href="#quiz" class="btn btn-ghost">🎯 Faire le quiz</a>
+      </div>
+      <div class="hero-counters">
+        <div class="counter-item">
+          <span class="counter-num" data-target="1000000000" data-suffix="+ FCFA" data-short>1 Milliard+</span>
+          <div class="counter-label">FCFA de volume traité</div>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" data-target="10" data-suffix="+">0</span>
+          <div class="counter-label">Projets lancés</div>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" data-target="10" data-suffix="+">0</span>
+          <div class="counter-label">Pays couverts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2 : QUI SUIS-JE ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap fade-up">
+          <div class="about-img-placeholder">👤
+            <div class="about-tag">Fondateur<br>Umdeny</div>
+          </div>
+        </div>
+        <div class="about-content fade-up">
+          <div class="section-label">Qui suis-je ?</div>
+          <h2 class="section-title">Yvan TADIE</h2>
+          <p><strong>Entrepreneur tech & digital</strong>, Yvan TADIE a fondé <strong>Umdeny</strong> en 2019 avec une vision claire : bâtir un écosystème digital à l'échelle du continent africain.</p>
+          <p>Formé à l'Université Catholique d'Afrique Centrale, il a travaillé sur des projets alliant <strong>fintech, e-commerce, formation en ligne et coworking</strong> — autant de verticales qui répondent aux défis concrets des Africains connectés.</p>
+          <p>En moins de 5 ans, l'écosystème Umdeny a généré plus de <strong>1 milliard de FCFA</strong> de volume traité et déployé ses solutions dans plus de <strong>10 pays</strong> africains.</p>
+          <p>Sa conviction : <strong>"L'Afrique n'a pas besoin de copier, elle a besoin de créer ses propres solutions."</strong></p>
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-num">2019</div>
+              <div class="about-stat-label">Fondation Umdeny</div>
+            </div>
+            <div>
+              <div class="about-stat-num">5+</div>
+              <div class="about-stat-label">Produits actifs</div>
+            </div>
+            <div>
+              <div class="about-stat-num">10+</div>
+              <div class="about-stat-label">Pays africains</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3 : PROJETS ========== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label">Nos Projets</div>
+      <h2 class="section-title">L'Écosystème Umdeny</h2>
+      <p class="section-sub">5 solutions digitales conçues pour répondre aux besoins réels des Africains.</p>
+      <div class="projects-grid">
+
+        <div class="project-card fade-up" style="--card-accent: #06b6d4;">
+          <div class="project-emoji">💳</div>
+          <span class="project-tag" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Fintech</span>
+          <div class="project-name">Mobile Wallet</div>
+          <p class="project-desc">Logiciel pour distributeurs automatiques de Mobile Money. Permet aux agents et entreprises de gérer des transactions Mobile Money de manière automatisée, rapide et sécurisée. Opérationnel dans plusieurs pays d'Afrique centrale et de l'Ouest.</p>
+          <a href="https://cal.com" target="_blank" class="project-link">Prendre RDV →</a>
+        </div>
+
+        <div class="project-card fade-up" style="--card-accent: #f59e0b;">
+          <div class="project-emoji">🤝</div>
+          <span class="project-tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Investissement</span>
+          <div class="project-name">Wemonii</div>
+          <p class="project-desc">Plateforme de mise en relation entre porteurs de projets et investisseurs. Les porteurs soumettent leurs projets et lèvent des fonds ; les investisseurs découvrent des opportunités africaines à fort potentiel et financent ceux qui les intéressent.</p>
+          <a href="https://cal.com" target="_blank" class="project-link">Prendre RDV →</a>
+        </div>
+
+        <div class="project-card fade-up" style="--card-accent: #a78bfa;">
+          <div class="project-emoji">🛒</div>
+          <span class="project-tag" style="background:rgba(167,139,250,0.12);color:#a78bfa;">E-commerce</span>
+          <div class="project-name">Meriaz</div>
+          <p class="project-desc">Marketplace e-commerce africaine mettant en relation vendeurs locaux et acheteurs. Conçue pour les commerçants et artisans qui souhaitent digitaliser leur boutique et toucher une clientèle élargie sur le continent.</p>
+          <a href="https://cal.com" target="_blank" class="project-link">Prendre RDV →</a>
+        </div>
+
+        <div class="project-card fade-up" style="--card-accent: #f97316;">
+          <div class="project-emoji">📶</div>
+          <span class="project-tag" style="background:rgba(249,115,22,0.12);color:#f97316;">Connectivité</span>
+          <div class="project-name">Cherryz</div>
+          <p class="project-desc">Solution de connectivité double : <strong>WiFi Zone</strong> pour les espaces publics (hôtels, restaurants, commerces) avec portail captif monétisable, et <strong>Internet B2B</strong> pour les entreprises nécessitant une connexion fiable et dédiée.</p>
+          <a href="https://cal.com" target="_blank" class="project-link">Prendre RDV →</a>
+        </div>
+
+        <div class="project-card fade-up" style="--card-accent: #10b981;">
+          <div class="project-emoji">🏢</div>
+          <span class="project-tag" style="background:rgba(16,185,129,0.12);color:#10b981;">Services</span>
+          <div class="project-name">Badawo</div>
+          <p class="project-desc">Service de mise en relation et de prestation pour professionnels et TPE/PME africaines. S'adresse aux indépendants, artisans et petites entreprises qui souhaitent trouver des missions, des clients ou sous-traiter des tâches spécifiques.</p>
+          <a href="https://cal.com" target="_blank" class="project-link">Prendre RDV →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4 : FORMATION ========== -->
+  <section id="formation" class="section">
+    <div class="container">
+      <div class="section-label">Formation</div>
+      <h2 class="section-title">Montez en Compétences</h2>
+      <p class="section-sub">Des formations conçues pour vous rendre autonome dans l'économie digitale africaine.</p>
+
+      <div class="formation-tabs">
+        <button class="tab-btn active" data-tab="trading">📈 Trading</button>
+        <button class="tab-btn" data-tab="p2p">🔄 Formation P2P</button>
+        <button class="tab-btn" data-tab="internet">🌐 Internet (Gratuit)</button>
+      </div>
+
+      <div class="tab-content active" id="tab-trading">
+        <div class="formation-card fade-up">
+          <div>
+            <div class="formation-title">Formation Trading</div>
+            <p class="formation-desc">
+              Apprenez les bases et stratégies avancées du trading de cryptomonnaies et du marché Forex. Une formation pratique, adaptée au contexte africain, avec des études de cas réels.
+            </p>
+            <div class="formation-modules">
+              <span class="module-pill">📊 Analyse technique</span>
+              <span class="module-pill">📉 Gestion des risques</span>
+              <span class="module-pill">🪙 Crypto & Forex</span>
+              <span class="module-pill">📱 Plateformes mobiles</span>
+              <span class="module-pill">🧠 Psychologie du trader</span>
+              <span class="module-pill">📈 Stratégies avancées</span>
+            </div>
+            <a href="https://cal.com" target="_blank" class="btn btn-primary">S'inscrire maintenant →</a>
+          </div>
+          <div class="formation-price-box">
+            <div class="formation-price">Sur devis</div>
+            <div class="formation-price-label">Contactez-nous</div>
+            <br>
+            <a href="#rdv" class="btn btn-outline" style="margin-top:12px;">Prendre RDV</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-p2p">
+        <div class="formation-card fade-up">
+          <div>
+            <div class="formation-title">Formation P2P Complète</div>
+            <p class="formation-desc">
+              Maîtrisez le trading Peer-to-Peer de cryptomonnaies : achat, vente, arbitrage et sécurité des transactions. 12 modules progressifs pour devenir autonome dans l'économie crypto africaine.
+            </p>
+            <div class="formation-modules">
+              <span class="module-pill">🆓 Module 1 — Gratuit</span>
+              <span class="module-pill">🔒 Module 2 à 12</span>
+              <span class="module-pill">💱 Achat & Vente P2P</span>
+              <span class="module-pill">🔐 Sécurité des transactions</span>
+              <span class="module-pill">📱 Binance & Bybit</span>
+              <span class="module-pill">💰 Arbitrage P2P</span>
+              <span class="module-pill">🌍 Marchés africains</span>
+              <span class="module-pill">📊 Gestion des gains</span>
+            </div>
+            <div style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2);border-radius:10px;padding:14px;margin-bottom:20px;">
+              <p style="font-size:0.85rem;color:var(--accent2);"><strong>✅ Module 1 GRATUIT</strong> — Accédez au premier module sans frais pour découvrir la formation avant de vous engager.</p>
+            </div>
+            <a href="https://cal.com" target="_blank" class="btn btn-primary">Accéder à la formation →</a>
+          </div>
+          <div class="formation-price-box">
+            <div class="formation-price">50 000</div>
+            <div class="formation-price-label">XAF — 12 modules</div>
+            <br>
+            <span class="badge-free">Module 1 Gratuit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-internet">
+        <div class="formation-card fade-up">
+          <div>
+            <div class="formation-title">Formation Internet</div>
+            <p class="formation-desc">
+              Découvrez gratuitement les fondamentaux d'internet, du marketing digital et de la présence en ligne. Idéale pour les entrepreneurs débutants qui souhaitent digitaliser leur activité sans bagage technique.
+            </p>
+            <div class="formation-modules">
+              <span class="module-pill">🌐 Bases d'internet</span>
+              <span class="module-pill">📱 Réseaux sociaux</span>
+              <span class="module-pill">📧 Email marketing</span>
+              <span class="module-pill">🛒 Vente en ligne</span>
+              <span class="module-pill">🔍 Référencement</span>
+            </div>
+            <a href="https://cal.com" target="_blank" class="btn btn-primary">Commencer gratuitement →</a>
+          </div>
+          <div class="formation-price-box">
+            <span class="badge-free">100% Gratuit</span>
+            <div class="formation-price" style="color:var(--accent2);">0 XAF</div>
+            <div class="formation-price-label">Accès immédiat</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5 : COWORKING ========== -->
+  <section id="coworking" class="section">
+    <div class="container">
+      <div class="section-label">Coworking Vireel</div>
+      <h2 class="section-title">Votre Espace de Travail</h2>
+      <p class="section-sub">Un espace moderne à Yaoundé pour travailler, créer et collaborer.</p>
+      <div class="coworking-grid">
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="plan-header">
+              <div class="plan-name">🪑 Bureau Partagé</div>
+            </div>
+            <p class="plan-desc">Poste de travail en open space, wifi haut débit, climatisation, café/thé inclus.</p>
+            <div class="plan-pricing">
+              <span class="plan-price-promo">5 000 XAF</span>
+              <span class="plan-price-old">8 000 XAF</span>
+              <span style="font-size:0.78rem;color:var(--muted);">/ jour</span>
+            </div>
+          </div>
+          <div class="plan-card featured">
+            <div class="plan-header">
+              <div class="plan-name">🚪 Bureau Privé</div>
+              <span class="plan-badge">POPULAIRE</span>
+            </div>
+            <p class="plan-desc">Bureau fermé pour 1-2 personnes. Idéal pour les réunions confidentielles.</p>
+            <div class="plan-pricing">
+              <span class="plan-price-promo">15 000 XAF</span>
+              <span class="plan-price-old">22 000 XAF</span>
+              <span style="font-size:0.78rem;color:var(--muted);">/ jour</span>
+            </div>
+          </div>
+          <div class="plan-card">
+            <div class="plan-header">
+              <div class="plan-name">🎤 Salle de Réunion</div>
+            </div>
+            <p class="plan-desc">Salle équipée (projecteur, tableau blanc) pour 8-10 personnes. Parfaite pour vos présentations et ateliers.</p>
+            <div class="plan-pricing">
+              <span class="plan-price-promo">25 000 XAF</span>
+              <span class="plan-price-old">40 000 XAF</span>
+              <span style="font-size:0.78rem;color:var(--muted);">/ demi-journée</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-up">
+          <div class="form-title">📅 Réserver un espace</div>
+          <div id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom *</label>
+                <input type="text" id="fname" placeholder="Jean" />
+                <div class="error-msg" id="fname-err">Champ obligatoire</div>
+              </div>
+              <div class="form-group">
+                <label>Nom *</label>
+                <input type="text" id="lname" placeholder="Dupont" />
+                <div class="error-msg" id="lname-err">Champ obligatoire</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="email" placeholder="jean@exemple.com" />
+              <div class="error-msg" id="email-err">Email valide requis</div>
+            </div>
+            <div class="form-group">
+              <label>Téléphone *</label>
+              <input type="tel" id="phone" placeholder="+237 6XX XXX XXX" />
+              <div class="error-msg" id="phone-err">Champ obligatoire</div>
+            </div>
+            <div class="form-group">
+              <label>Type d'espace *</label>
+              <select id="space">
+                <option value="">-- Sélectionner --</option>
+                <option value="partage">Bureau Partagé — 5 000 XAF/jour</option>
+                <option value="prive">Bureau Privé — 15 000 XAF/jour</option>
+                <option value="reunion">Salle de Réunion — 25 000 XAF/demi-journée</option>
+              </select>
+              <div class="error-msg" id="space-err">Veuillez sélectionner un espace</div>
+            </div>
+            <div class="form-group">
+              <label>Date souhaitée *</label>
+              <input type="date" id="date" />
+              <div class="error-msg" id="date-err">Date obligatoire</div>
+            </div>
+            <div class="form-group">
+              <label>Message (optionnel)</label>
+              <textarea id="message" rows="3" placeholder="Besoins spécifiques..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitBooking()" style="width:100%;justify-content:center;">
+              Confirmer la réservation →
+            </button>
+          </div>
+          <div class="form-success" id="bookingSuccess">
+            ✅ Réservation reçue ! Nous vous contactons dans les 24h pour confirmer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6 : QUIZ ========== -->
+  <section id="quiz" class="section">
+    <div class="container">
+      <div class="section-label">Quiz Interactif</div>
+      <h2 class="section-title" style="text-align:center;">Quel service vous correspond ?</h2>
+      <p class="section-sub" style="margin:0 auto 48px;text-align:center;">5 questions pour trouver la solution Umdeny faite pour vous.</p>
+
+      <div class="quiz-wrap">
+        <div id="quiz-form">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quizProgress" style="width:20%"></div>
+          </div>
+          <div class="quiz-q-num" id="quizQNum">Question 1 / 5</div>
+          <div class="quiz-question" id="quizQuestion"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-nav">
+            <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()" style="display:none;">← Précédent</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Suivant →</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quizResult">
+          <div class="quiz-result-emoji" id="resultEmoji"></div>
+          <div class="quiz-result-title" id="resultTitle"></div>
+          <p class="quiz-result-desc" id="resultDesc"></p>
+          <div class="quiz-result-card">
+            <div class="quiz-result-label">Notre recommandation</div>
+            <div class="quiz-result-reco" id="resultReco"></div>
+          </div>
+          <a id="resultLink" href="#" class="btn btn-primary" style="width:100%;justify-content:center;">Découvrir →</a>
+          <br><br>
+          <button class="btn btn-outline" onclick="restartQuiz()" style="width:100%;justify-content:center;">🔄 Recommencer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 7 : PRENDRE RDV ========== -->
+  <section id="rdv" class="section">
+    <div class="container">
+      <div class="section-label">Prendre RDV</div>
+      <h2 class="section-title">Parlons de votre Projet</h2>
+      <p class="section-sub">Choisissez le projet qui vous intéresse et réservez votre créneau.</p>
+      <div class="rdv-grid">
+        <div class="rdv-card fade-up">
+          <div class="rdv-emoji">💳</div>
+          <div class="rdv-name">Mobile Wallet</div>
+          <div class="rdv-sub">Fintech & Mobile Money</div>
+          <a href="https://cal.com/umdeny/mobile-wallet" target="_blank" class="rdv-btn">Réserver →</a>
+        </div>
+        <div class="rdv-card fade-up">
+          <div class="rdv-emoji">🤝</div>
+          <div class="rdv-name">Wemonii</div>
+          <div class="rdv-sub">Investissement & projets</div>
+          <a href="https://cal.com/umdeny/wemonii" target="_blank" class="rdv-btn">Réserver →</a>
+        </div>
+        <div class="rdv-card fade-up">
+          <div class="rdv-emoji">🛒</div>
+          <div class="rdv-name">Meriaz</div>
+          <div class="rdv-sub">E-commerce africain</div>
+          <a href="https://cal.com/umdeny/meriaz" target="_blank" class="rdv-btn">Réserver →</a>
+        </div>
+        <div class="rdv-card fade-up">
+          <div class="rdv-emoji">📶</div>
+          <div class="rdv-name">Cherryz</div>
+          <div class="rdv-sub">WiFi Zone & Internet B2B</div>
+          <a href="https://cal.com/umdeny/cherryz" target="_blank" class="rdv-btn">Réserver →</a>
+        </div>
+        <div class="rdv-card fade-up">
+          <div class="rdv-emoji">🏢</div>
+          <div class="rdv-name">Badawo</div>
+          <div class="rdv-sub">Services & prestataires</div>
+          <a href="https://cal.com/umdeny/badawo" target="_blank" class="rdv-btn">Réserver →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Vireel <span>·</span> Umdeny</div>
+          <p class="footer-desc">Écosystème digital pensé pour l'Afrique. Fintech, e-commerce, formation, coworking — des solutions concrètes pour les entrepreneurs africains.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Projets</h4>
+          <ul class="footer-links">
+            <li><a href="#projects">Mobile Wallet</a></li>
+            <li><a href="#projects">Wemonii</a></li>
+            <li><a href="#projects">Meriaz</a></li>
+            <li><a href="#projects">Cherryz</a></li>
+            <li><a href="#projects">Badawo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#formation">Formation Trading</a></li>
+            <li><a href="#formation">Formation P2P</a></li>
+            <li><a href="#formation">Formation Internet</a></li>
+            <li><a href="#coworking">Coworking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:direction@umdeny.com">direction@umdeny.com</a></li>
+            <li><a href="#rdv">Prendre RDV</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#quiz">Quiz interactif</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 <a href="#">Vireel · Umdeny</a>. Tous droits réservés. Fondé par Yvan TADIE en 2019.</p>
+        <p class="footer-copy" style="color:var(--muted);">Yaoundé, Cameroun 🇨🇲</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
+
+  <script>
+    // ===== NAV MOBILE =====
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    burger.addEventListener('keydown', e => e.key === 'Enter' && mobileMenu.classList.toggle('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    // ===== SCROLL TOP =====
+    const scrollBtn = document.getElementById('scrolltop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('show', window.scrollY > 400);
+    });
+
+    // ===== COUNTERS =====
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isShort = el.dataset.short !== undefined;
+      if (isShort) { el.textContent = '1 Milliard+ FCFA'; return; }
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = 'true';
+          animateCounter(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+
+    // ===== FADE IN =====
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          fadeObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // ===== TABS =====
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ===== BOOKING FORM =====
+    function submitBooking() {
+      let valid = true;
+      const fields = [
+        { id: 'fname', err: 'fname-err', check: v => v.trim().length > 0 },
+        { id: 'lname', err: 'lname-err', check: v => v.trim().length > 0 },
+        { id: 'email', err: 'email-err', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: 'phone', err: 'phone-err', check: v => v.trim().length > 5 },
+        { id: 'space', err: 'space-err', check: v => v !== '' },
+        { id: 'date', err: 'date-err', check: v => v !== '' },
+      ];
+      fields.forEach(f => {
+        const el = document.getElementById(f.id);
+        const errEl = document.getElementById(f.err);
+        const isValid = f.check(el.value);
+        el.classList.toggle('error', !isValid);
+        errEl.classList.toggle('show', !isValid);
+        if (!isValid) valid = false;
+      });
+      if (valid) {
+        document.getElementById('bookingForm').style.opacity = '0';
+        document.getElementById('bookingForm').style.pointerEvents = 'none';
+        setTimeout(() => {
+          document.getElementById('bookingForm').style.display = 'none';
+          document.getElementById('bookingSuccess').classList.add('show');
+        }, 300);
+      }
+    }
+
+    // ===== QUIZ =====
+    const questions = [
+      {
+        q: "Quelle est votre principale activité ?",
+        opts: ["Je gère des transactions Mobile Money", "J'ai un projet à financer / Je cherche à investir", "Je vends des produits ou services", "Je cherche à me former / développer mes compétences"]
+      },
+      {
+        q: "Quel est votre plus grand défi en ce moment ?",
+        opts: ["Automatiser et sécuriser mes paiements", "Trouver des fonds ou des opportunités d'investissement", "Trouver plus de clients en ligne", "Maîtriser le trading ou le numérique"]
+      },
+      {
+        q: "Avez-vous besoin d'un espace de travail professionnel ?",
+        opts: ["Oui, j'ai besoin d'un bureau régulièrement", "Oui, mais seulement pour des réunions", "Non, je travaille à distance", "Peut-être, selon les opportunités"]
+      },
+      {
+        q: "Quelle zone géographique vous intéresse ?",
+        opts: ["Cameroun uniquement", "Afrique centrale", "Toute l'Afrique", "Au-delà de l'Afrique"]
+      },
+      {
+        q: "Quel est votre profil ?",
+        opts: ["Entrepreneur / Fondateur de startup", "Investisseur / Business angel", "Commerçant / Artisan", "Étudiant / En reconversion"]
+      }
+    ];
+
+    const results = [
+      { emoji: "💳", title: "Mobile Wallet — Votre solution fintech", desc: "Vous gérez des flux financiers importants. Mobile Wallet vous permettra d'automatiser vos transactions Mobile Money et de gagner en efficacité.", reco: "Rencontrez notre équipe Mobile Wallet pour digitaliser vos flux de paiement.", link: "#projects" },
+      { emoji: "🤝", title: "Wemonii — Connectez projets & investissements", desc: "Que vous cherchiez à lever des fonds ou à investir, Wemonii est la plateforme qui vous met en relation avec les bonnes personnes.", reco: "Inscrivez-vous sur Wemonii et soumettez votre projet ou profil investisseur.", link: "#projects" },
+      { emoji: "🛒", title: "Meriaz — Vendez partout en Afrique", desc: "Votre activité de vente mérite une vitrine digitale. Meriaz vous ouvre un marché continental et vous donne les outils pour vendre en ligne.", reco: "Ouvrez votre boutique sur Meriaz et touchez des milliers d'acheteurs.", link: "#projects" },
+      { emoji: "📚", title: "Formation — Montez en compétences", desc: "Votre avenir se construit sur les connaissances. Nos formations en Trading, P2P et Internet vous donnent les outils concrets pour réussir.", reco: "Commencez par la Formation Internet (gratuite) ou la Formation P2P.", link: "#formation" },
+      { emoji: "🏢", title: "Coworking Vireel — Votre base opérationnelle", desc: "Un espace professionnel, bien équipé et stimulant est souvent la clé pour faire décoller un projet. Rejoignez notre communauté au Coworking Vireel.", reco: "Réservez une journée d'essai dans notre espace coworking à Yaoundé.", link: "#coworking" },
+    ];
+
+    let currentQ = 0;
+    const answers = [];
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('quizQNum').textContent = `Question ${currentQ + 1} / ${questions.length}`;
+      document.getElementById('quizQuestion').textContent = q.q;
+      document.getElementById('quizProgress').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+      const opts = document.getElementById('quizOptions');
+      opts.innerHTML = '';
+      const letters = ['A','B','C','D'];
+      q.opts.forEach((opt, i) => {
+        const el = document.createElement('div');
+        el.className = 'quiz-option' + (answers[currentQ] === i ? ' selected' : '');
+        el.innerHTML = `<span class="quiz-option-letter">${letters[i]}</span>${opt}`;
+        el.addEventListener('click', () => selectAnswer(i));
+        opts.appendChild(el);
+      });
+      document.getElementById('prevBtn').style.display = currentQ > 0 ? 'inline-flex' : 'none';
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.textContent = currentQ === questions.length - 1 ? 'Voir mon résultat 🎯' : 'Suivant →';
+      nextBtn.disabled = answers[currentQ] === undefined;
+    }
+
+    function selectAnswer(i) {
+      answers[currentQ] = i;
+      document.querySelectorAll('.quiz-option').forEach((el, idx) => {
+        el.classList.toggle('selected', idx === i);
+      });
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function nextQuestion() {
+      if (answers[currentQ] === undefined) return;
+      if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQ > 0) { currentQ--; renderQuestion(); }
+    }
+
+    function showResult() {
+      // Score mapping based on answers
+      const scores = [0,0,0,0,0]; // mobile, wemonii, meriaz, formation, coworking
+      if (answers[0] === 0) scores[0] += 3;
+      if (answers[0] === 1) scores[1] += 3;
+      if (answers[0] === 2) scores[2] += 3;
+      if (answers[0] === 3) scores[3] += 3;
+      if (answers[1] === 0) scores[0] += 2;
+      if (answers[1] === 1) scores[1] += 2;
+      if (answers[1] === 2) scores[2] += 2;
+      if (answers[1] === 3) scores[3] += 2;
+      if (answers[2] === 0) scores[4] += 3;
+      if (answers[2] === 1) scores[4] += 2;
+      if (answers[4] === 0) scores[1] += 1;
+      if (answers[4] === 1) scores[1] += 2;
+      if (answers[4] === 2) scores[2] += 2;
+      if (answers[4] === 3) scores[3] += 2;
+
+      const best = scores.indexOf(Math.max(...scores));
+      const r = results[best];
+      document.getElementById('resultEmoji').textContent = r.emoji;
+      document.getElementById('resultTitle').textContent = r.title;
+      document.getElementById('resultDesc').textContent = r.desc;
+      document.getElementById('resultReco').textContent = r.reco;
+      document.getElementById('resultLink').href = r.link;
+      document.getElementById('quiz-form').style.display = 'none';
+      document.getElementById('quizResult').classList.add('show');
+    }
+
+    function restartQuiz() {
+      currentQ = 0;
+      answers.length = 0;
+      document.getElementById('quiz-form').style.display = 'block';
+      document.getElementById('quizResult').classList.remove('show');
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script>
+</body>
+</html>
