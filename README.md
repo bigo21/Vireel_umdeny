@@ -15,7 +15,7 @@ Ouvrir `index.html` directement dans un navigateur — aucun serveur requis.
 | Catégorie | Outil |
 |-----------|-------|
 | Langages | HTML5, CSS3, JavaScript (ES6+) |
-| Polices | Google Fonts — Syne (titres), DM Sans (corps) |
+| Polices | Google Fonts — Space Grotesk (titres), DM Sans (corps) |
 | IA | Claude (Anthropic) — pour la génération et structuration du code |
 | Éditeur | VS Code |
 | Versioning | Git / GitHub |
@@ -27,7 +27,7 @@ Ouvrir `index.html` directement dans un navigateur — aucun serveur requis.
 ## 🧠 Processus de développement
 
 1. **Lecture complète du brief** — identification de toutes les sections obligatoires, des exigences design et des questions de compréhension.
-2. **Recherche sur l'écosystème** — exploration de vireel.umdeny.com et recherches complémentaires pour comprendre chaque produit.
+2. **Recherche sur l'écosystème** — exploration de sites web et profils LinkedIn et recherches complémentaires pour comprendre chaque produit.
 3. **Architecture décidée** : one-page HTML unique, mobile-first, dark theme, CSS variables pour la cohérence.
 4. **Ordre de développement** :
    - Base (variables CSS, reset, typographie, nav)
@@ -69,6 +69,7 @@ Ouvrir `index.html` directement dans un navigateur — aucun serveur requis.
 
 | Difficulté | Solution |
 |-----------|----------|
+| Obtention difficile des informations précises sur *Badawo* et les dimensions exactes du *Coworking Vireel* | Utilisation de données génériques et de structures types issues des recherches sur les sites officiels pour combler les manques tout en restant cohérent avec l'écosystème. |
 | Compteur "1 Milliard+ FCFA" ne peut pas s'animer comme un entier normal | Détection via `data-short` → affichage direct du texte |
 | Formulaire : validation HTML5 native peu esthétique | Validation JavaScript custom avec messages d'erreur stylisés |
 | Quiz : système de scoring équitable sur 5 questions | Matrice de scores pondérés (réponses Q1 = poids 3, Q2 = poids 2, etc.) |
@@ -80,9 +81,9 @@ Ouvrir `index.html` directement dans un navigateur — aucun serveur requis.
 ## ✅ Questions de compréhension
 
 ### 1. Qu'est-ce que Wemonii ?
-**Wemonii** est une plateforme de mise en relation entre porteurs de projets et investisseurs.
-- **Porteur de projet** : soumet son projet sur la plateforme pour chercher des financements. Il présente son business plan, ses besoins en capital et ses perspectives.
-- **Investisseur** : parcourt les projets disponibles, évalue les opportunités et choisit ceux dans lesquels il souhaite injecter des fonds.
+**Wemonii** est une plateforme de **crowdfunding (financement participatif)** et d'investissement qui facilite la mise en relation entre des porteurs de projets locaux et des investisseurs (diaspora ou milieu des affaires).
+- **Porteur de projet** : L'entrepreneur qui recherche des fonds pour lancer ou développer son activité.
+- **Investisseur** : La personne qui apporte le capital en échange d'un retour sur investissement (ROI) défini par parts sociales ou intérêts.
 La différence clé : le porteur **cherche de l'argent**, l'investisseur **apporte de l'argent** en échange d'un retour sur investissement.
 
 ### 2. Cherryz WiFi Zone vs Cherryz Internet B2B
@@ -90,26 +91,26 @@ La différence clé : le porteur **cherche de l'argent**, l'investisseur **appor
 - **Cherryz Internet B2B** : solution de connectivité dédiée pour les entreprises qui ont besoin d'une connexion stable, rapide et professionnelle pour leurs opérations quotidiennes. Contrat entreprise, SLA, support technique.
 
 ### 3. Qu'est-ce que Badawo ?
-**Badawo** est un service de mise en relation et de prestation pour les professionnels, indépendants et TPE/PME africaines. Il s'adresse aux **artisans, freelances, prestataires de services** qui cherchent des missions ou des clients, ainsi qu'aux **entreprises** qui souhaitent sous-traiter des tâches spécifiques. C'est une sorte de marketplace de services B2B/B2C locale.
+**Badawo** est une plateforme technologique pour démocratiser l'accès à l'investissement dans les **métaux précieux (Or)**. Permet d'acheter, vendre et stocker de l'or de manière digitale.
+- **Particuliers** : Protègent leur épargne contre l'inflation.
+- **Petits investisseurs** : Achat de fractions d'or accessibles à petit budget.
+- **Professionnels** : Suivi des cours en temps réel et sécurisation des transactions.
 
 ### 4. Formation P2P — Prix et module gratuit
-- **Prix total** : **50 000 XAF** pour la formation complète (12 modules)
-- **Module gratuit** : le **Module 1** est accessible gratuitement, sans paiement préalable
-- **Comment y accéder** : en s'inscrivant sur la plateforme de formation Umdeny, le Module 1 est déverrouillé automatiquement. Les modules 2 à 12 nécessitent le paiement des 50 000 XAF.
+- **Prix de la formation complète** : Généralement **150 000 FCFA**.
+- **Module gratuit** : Le **Module 1 (Introduction et Fondamentaux)**, axé sur la sécurité et la configuration.
+- **Accès** : Via inscription sur la plateforme ou intégration des canaux Telegram/WhatsApp dédiés.
 
 ### 5. Les 3 espaces Coworking Vireel
-
-| Espace | Tarif normal | Tarif promo |
-|--------|-------------|-------------|
-| 🪑 Bureau Partagé (open space) | 8 000 XAF/jour | **5 000 XAF/jour** |
-| 🚪 Bureau Privé (1-2 personnes) | 22 000 XAF/jour | **15 000 XAF/jour** |
-| 🎤 Salle de Réunion (8-10 pers.) | 40 000 XAF/demi-journée | **25 000 XAF/demi-journée** |
+L'espace propose trois bureaux fermés :
+- **Deux bureaux de 10 m²** (Idéal travail individuel/duo).
+- **Un bureau de 22 m²** (Idéal startup ou réunion).
 
 ---
 
 ## 🔄 Avec plus de temps, je ferais...
 
-1. **Vraies photos** : intégration des visuels officiels de chaque projet depuis vireel.umdeny.com
+1. **Utilisation des informations réelles** : intégration des visuels officiels de chaque projet, intégration des descriptions officielles et correctes et des tarifs réels.
 2. **Intégration cal.com réelle** : liens RDV fonctionnels avec les vrais identifiants Umdeny
 3. **Animation scroll avancée** : effet parallaxe sur le Hero, révélation progressive des cards au scroll
 4. **Back-end formulaire** : envoi réel du formulaire coworking par email (Formspree ou Netlify Forms)
@@ -135,4 +136,4 @@ La différence clé : le porteur **cherche de l'argent**, l'investisseur **appor
 
 ---
 
-*Contact : direction@umdeny.com | Objet : [DEVOIR WEB JUNIOR] Prénom Nom*
+*Contact : direction@umdeny.com | Objet : DEVOIR WEB JUNIOR Gaëtan Loïc ANGO A.
