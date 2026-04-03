@@ -39,25 +39,28 @@ const PROJECTS = [
 
 const COWORKING_SPACES = [
     {
-        id: 'bureau-10-a',
-        name: 'Bureau 10m² (A)',
-        price: 10000,
-        promoPrice: 8000,
-        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7']
+        id: 'bureau-partage',
+        name: 'Bureau Partagé',
+        price: 4000,
+        promoPrice: 2000,
+        unit: 'jour',
+        features: ['Connexion haut débit illimitée', 'Assistante de direction', 'Sécurité et confort', 'Groupe électrogène']
     },
     {
-        id: 'bureau-10-b',
-        name: 'Bureau 10m² (B)',
+        id: 'bureau-dedie',
+        name: 'Bureau Dédié',
         price: 10000,
-        promoPrice: 8000,
-        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7']
+        promoPrice: 4000,
+        unit: 'jour',
+        features: ['Connexion haut débit illimitée', 'Assistante de direction', 'Sécurité et confort', 'Groupe électrogène']
     },
     {
-        id: 'bureau-22',
-        name: 'Bureau 22m²',
-        price: 20000,
-        promoPrice: 16000,
-        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7', 'Espace Lounge']
+        id: 'salle-reunion',
+        name: 'Salle de réunion',
+        price: 10000,
+        promoPrice: 5000,
+        unit: 'heure',
+        features: ['Connexion haut débit illimitée', 'Assistante de direction', 'Sécurité et confort', 'Groupe électrogène']
     }
 ];
 
@@ -214,12 +217,13 @@ COWORKING_SPACES.forEach((space, index) => {
     card.className = `bg-slate-900 p-10 rounded-3xl border border-slate-800 hover:border-blue-500/30 transition-all duration-300 shadow-xl relative overflow-hidden group reveal-up`;
     card.style.transitionDelay = `${index * 0.1}s`;
     card.innerHTML = `
-        <div class="absolute top-4 right-4 bg-blue-600/10 text-blue-500 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Promo</div>
+        <div class="absolute top-4 right-4 promo-badge text-[10px] uppercase tracking-tighter">Super Promo</div>
+        <div class="absolute top-14 right-4 text-blue-500 text-[10px] font-bold uppercase">Jusqu'au 30 Mars</div>
         <h3 class="text-2xl font-bold text-white mb-6">${space.name}</h3>
         <div class="mb-8">
             <span class="text-slate-500 line-through text-lg mr-3">${space.price.toLocaleString()} FCFA</span>
             <span class="text-3xl font-bold text-white">${space.promoPrice.toLocaleString()} FCFA</span>
-            <span class="text-slate-500 text-sm ml-1">/ jour</span>
+            <span class="text-slate-500 text-sm ml-1">/ ${space.unit}</span>
         </div>
         <ul class="space-y-4 mb-10">
             ${space.features.map(f => `<li class="flex items-center gap-3 text-slate-400"><i data-lucide="check" size="18" class="text-blue-500"></i> ${f}</li>`).join('')}

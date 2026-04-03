@@ -8,6 +8,18 @@
     animation: fade-in 1s ease-out forwards;
 }
 
+/* Super Promo Badge */
+.promo-badge {
+    background: #facc15; /* yellow-400 */
+    color: #000;
+    font-weight: 900;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transform: rotate(-5deg);
+    box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+    z-index: 10;
+}
+
 /* Reveal on Scroll */
 .reveal-left {
     opacity: 0;
