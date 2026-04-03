@@ -6,7 +6,7 @@
 
 ## 🔗 Démonstration
 
-Ouvrir `index.html` directement dans un navigateur — aucun serveur requis.
+Ouvrir `https://bigo21.github.io/Vireel_umdeny/` directement dans un navigateur — aucun serveur requis.
 
 ---
 
