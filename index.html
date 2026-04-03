@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-slate-950 text-slate-200 font-['Inter'] selection:bg-blue-600 selection:text-white">
 
@@ -144,7 +145,7 @@
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-20">
                     <span class="text-blue-500 font-semibold tracking-wider uppercase text-sm">Formations</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">Boostez vos <span className="text-blue-500">compétences</span></h2>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">Boostez vos <span class="text-blue-500">compétences</span></h2>
                     <div class="h-1 w-20 bg-blue-600 rounded-full mx-auto mt-6"></div>
                 </div>
 
@@ -240,9 +241,9 @@
                                 <label class="text-sm font-medium text-slate-400 ml-1">Espace souhaité</label>
                                 <select name="space" required class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-600 transition-all appearance-none">
                                     <option value="">Choisir un espace</option>
-                                    <option value="bureau-10-a">Bureau 10m² (A)</option>
-                                    <option value="bureau-10-b">Bureau 10m² (B)</option>
-                                    <option value="bureau-22">Bureau 22m²</option>
+                                    <option value="bureau-partage">Bureau Partagé</option>
+                                    <option value="bureau-dedie">Bureau Dédié</option>
+                                    <option value="salle-reunion">Salle de réunion</option>
                                 </select>
                             </div>
                             <div class="space-y-2">
@@ -347,15 +348,15 @@
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4 text-slate-400">
                             <i data-lucide="map-pin" class="text-blue-500 shrink-0" size="20"></i>
-                            <span>Yaoundé, Cameroun</span>
+                            <span>Quartier fouda, Hotel Mansel, Yaoundé</span>
                         </li>
                         <li class="flex items-center gap-4 text-slate-400">
                             <i data-lucide="phone" class="text-blue-500 shrink-0" size="20"></i>
-                            <span>+237 6XX XXX XXX</span>
+                            <span>651 14 74 12 / 242 01 46 64</span>
                         </li>
                         <li class="flex items-center gap-4 text-slate-400">
                             <i data-lucide="mail" class="text-blue-500 shrink-0" size="20"></i>
-                            <span>contact@umdeny.com</span>
+                            <span>direction@umdeny.com</span>
                         </li>
                     </ul>
                 </div>
@@ -374,5 +375,6 @@
     </footer>
 
     <script src="script.js"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
