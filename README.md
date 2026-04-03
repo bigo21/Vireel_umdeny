@@ -15,12 +15,13 @@ Ouvrir `https://bigo21.github.io/Vireel_umdeny/` directement dans un navigateur 
 | Catégorie | Outil |
 |-----------|-------|
 | Langages | HTML5, CSS3, JavaScript (ES6+) |
+| Framework | Tailwindcss |
 | Polices | Google Fonts — Syne (titres), DM Sans (corps) |
-| IA | Claude (Anthropic) — pour la génération et structuration du code |
+| IA | Gemini 3 flash preview (aistudio) — pour la génération et structuration du code |
 | Éditeur | VS Code |
 | Versioning | Git / GitHub |
 
-**Zéro dépendances npm. Zéro framework. Un seul fichier HTML.**
+**Zéro dépendances npm. Un seul fichier HTML, un fichier CSS et un fichier JS.**
 
 ---
 
