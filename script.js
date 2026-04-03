@@ -4,35 +4,35 @@ const PROJECTS = [
         id: 'mobile-wallet',
         title: 'Mobile Wallet',
         description: 'Solution globale de paiement et d\'inclusion financière permettant d\'envoyer, recevoir et gérer de l\'argent partout dans le monde.',
-        image: 'https://picsum.photos/seed/wallet/800/600',
+        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=600',
         calLink: 'https://cal.com/vireel/mobile-wallet'
     },
     {
         id: 'wemonii',
         title: 'Wemonii',
         description: 'Plateforme de crowdfunding et d\'investissement reliant porteurs de projets locaux et investisseurs de la diaspora.',
-        image: 'https://picsum.photos/seed/wemonii/800/600',
+        image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800&h=600',
         calLink: 'https://cal.com/vireel/wemonii'
     },
     {
         id: 'meriaz',
         title: 'Meriaz',
         description: 'Logiciel de gestion d\'entreprise (ERP) tout-en-un pour simplifier la comptabilité, les stocks et les ventes.',
-        image: 'https://picsum.photos/seed/meriaz/800/600',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600',
         calLink: 'https://cal.com/vireel/meriaz'
     },
     {
         id: 'cherryz',
         title: 'Cherryz',
         description: 'Solutions de connectivité : WiFi Zone pour le public et Internet B2B dédié pour les entreprises.',
-        image: 'https://picsum.photos/seed/cherryz/800/600',
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800&h=600',
         calLink: 'https://cal.com/vireel/cherryz'
     },
     {
         id: 'badawo',
         title: 'Badawo',
         description: 'Plateforme technologique pour l\'investissement dans les métaux précieux, permettant d\'acheter et de stocker de l\'or digitalement.',
-        image: 'https://picsum.photos/seed/badawo/800/600',
+        image: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&q=80&w=800&h=600',
         calLink: 'https://cal.com/vireel/badawo'
     }
 ];
@@ -67,33 +67,33 @@ const COWORKING_SPACES = [
 const QUIZ_QUESTIONS = [
     {
         id: 1,
-        question: "Quel est votre objectif principal ?",
-        options: ["Investir dans l'or", "Gérer mon entreprise", "Payer à l'international", "Travailler en équipe"],
-        recommendation: "Badawo"
+        question: "Quel est votre objectif principal aujourd'hui ?",
+        options: ["Sécuriser mon épargne", "Digitaliser mon entreprise", "Trouver un bureau à Yaoundé", "Financer un projet local"],
+        recommendation: "Vireel Ecosystem"
     },
     {
         id: 2,
-        question: "Quel domaine vous intéresse le plus ?",
-        options: ["Métaux précieux", "Gestion d'entreprise", "Paiements globaux", "Crowdfunding"],
-        recommendation: "Meriaz"
+        question: "De quel type d'espace de travail avez-vous besoin ?",
+        options: ["Un bureau partagé (Freelance)", "Un bureau dédié (Équipe)", "Une salle de réunion", "Je travaille à domicile"],
+        recommendation: "Coworking Vireel"
     },
     {
         id: 3,
-        question: "De quoi avez-vous besoin immédiatement ?",
-        options: ["Épargne sécurisée", "Outil de facturation", "Carte bancaire virtuelle", "Espace de bureau"],
+        question: "Quelle solution technologique vous manque ?",
+        options: ["Paiement international", "Gestion ERP / Facturation", "WiFi Zone public", "Investissement Or"],
         recommendation: "Mobile Wallet"
     },
     {
         id: 4,
-        question: "Comment souhaitez-vous protéger votre épargne ?",
-        options: ["Achat d'or digital", "Investissement projet", "Compte épargne", "Formation P2P"],
+        question: "Comment souhaitez-vous investir ?",
+        options: ["Or digital (Badawo)", "Crowdfunding (Wemonii)", "Crypto-actifs", "Immobilier"],
         recommendation: "Badawo"
     },
     {
         id: 5,
-        question: "Quelle est la taille de votre équipe ?",
-        options: ["Indépendant", "Petite équipe (10m²)", "Équipe moyenne (22m²)", "Grande entreprise"],
-        recommendation: "Coworking Vireel"
+        question: "Quel service Vireel vous intéresse le plus ?",
+        options: ["Coworking & Bureaux", "Solutions de Paiement", "Logiciels de Gestion", "Investissements"],
+        recommendation: "Vireel Services"
     }
 ];
 
