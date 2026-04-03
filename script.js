@@ -1,0 +1,351 @@
+// Data
+const PROJECTS = [
+    {
+        id: 'mobile-wallet',
+        title: 'Mobile Wallet',
+        description: 'Solution globale de paiement et d\'inclusion financière permettant d\'envoyer, recevoir et gérer de l\'argent partout dans le monde.',
+        image: 'https://picsum.photos/seed/wallet/800/600',
+        calLink: 'https://cal.com/vireel/mobile-wallet'
+    },
+    {
+        id: 'wemonii',
+        title: 'Wemonii',
+        description: 'Plateforme de crowdfunding et d\'investissement reliant porteurs de projets locaux et investisseurs de la diaspora.',
+        image: 'https://picsum.photos/seed/wemonii/800/600',
+        calLink: 'https://cal.com/vireel/wemonii'
+    },
+    {
+        id: 'meriaz',
+        title: 'Meriaz',
+        description: 'Logiciel de gestion d\'entreprise (ERP) tout-en-un pour simplifier la comptabilité, les stocks et les ventes.',
+        image: 'https://picsum.photos/seed/meriaz/800/600',
+        calLink: 'https://cal.com/vireel/meriaz'
+    },
+    {
+        id: 'cherryz',
+        title: 'Cherryz',
+        description: 'Solutions de connectivité : WiFi Zone pour le public et Internet B2B dédié pour les entreprises.',
+        image: 'https://picsum.photos/seed/cherryz/800/600',
+        calLink: 'https://cal.com/vireel/cherryz'
+    },
+    {
+        id: 'badawo',
+        title: 'Badawo',
+        description: 'Plateforme technologique pour l\'investissement dans les métaux précieux, permettant d\'acheter et de stocker de l\'or digitalement.',
+        image: 'https://picsum.photos/seed/badawo/800/600',
+        calLink: 'https://cal.com/vireel/badawo'
+    }
+];
+
+const COWORKING_SPACES = [
+    {
+        id: 'bureau-10-a',
+        name: 'Bureau 10m² (A)',
+        price: 10000,
+        promoPrice: 8000,
+        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7']
+    },
+    {
+        id: 'bureau-10-b',
+        name: 'Bureau 10m² (B)',
+        price: 10000,
+        promoPrice: 8000,
+        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7']
+    },
+    {
+        id: 'bureau-22',
+        name: 'Bureau 22m²',
+        price: 20000,
+        promoPrice: 16000,
+        features: ['WiFi Haut Débit', 'Climatisation', 'Accès 24/7', 'Espace Lounge']
+    }
+];
+
+const QUIZ_QUESTIONS = [
+    {
+        id: 1,
+        question: "Quel est votre objectif principal ?",
+        options: ["Investir dans l'or", "Gérer mon entreprise", "Payer à l'international", "Travailler en équipe"],
+        recommendation: "Badawo"
+    },
+    {
+        id: 2,
+        question: "Quel domaine vous intéresse le plus ?",
+        options: ["Métaux précieux", "Gestion d'entreprise", "Paiements globaux", "Crowdfunding"],
+        recommendation: "Meriaz"
+    },
+    {
+        id: 3,
+        question: "De quoi avez-vous besoin immédiatement ?",
+        options: ["Épargne sécurisée", "Outil de facturation", "Carte bancaire virtuelle", "Espace de bureau"],
+        recommendation: "Mobile Wallet"
+    },
+    {
+        id: 4,
+        question: "Comment souhaitez-vous protéger votre épargne ?",
+        options: ["Achat d'or digital", "Investissement projet", "Compte épargne", "Formation P2P"],
+        recommendation: "Badawo"
+    },
+    {
+        id: 5,
+        question: "Quelle est la taille de votre équipe ?",
+        options: ["Indépendant", "Petite équipe (10m²)", "Équipe moyenne (22m²)", "Grande entreprise"],
+        recommendation: "Coworking Vireel"
+    }
+];
+
+// Initialize Lucide Icons
+lucide.createIcons();
+
+// Navbar Scroll Effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('bg-slate-950/80', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800');
+        navbar.classList.remove('bg-transparent', 'py-6');
+    } else {
+        navbar.classList.remove('bg-slate-950/80', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800');
+        navbar.classList.add('bg-transparent', 'py-6');
+    }
+});
+
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
+});
+
+// Counters Animation
+const counters = document.querySelectorAll('.counter');
+const animateCounters = () => {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const speed = 200;
+        const inc = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(animateCounters, 10);
+        } else {
+            counter.innerText = target;
+        }
+    });
+};
+
+// Intersection Observer for Animations
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            if (entry.target.classList.contains('counter')) {
+                // Trigger counter animation only once
+            }
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up').forEach(el => observer.observe(el));
+
+// Trigger counters separately when in view
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounters();
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+if (counters.length > 0) {
+    counterObserver.observe(counters[0].parentElement.parentElement);
+}
+
+// Render Projects
+const projectsGrid = document.getElementById('projects-grid');
+const footerProjects = document.getElementById('footer-projects');
+
+PROJECTS.forEach((project, index) => {
+    const card = document.createElement('div');
+    card.className = `group relative bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-300 shadow-xl reveal-up`;
+    card.style.transitionDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+        <div class="aspect-video overflow-hidden">
+            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerpolicy="no-referrer">
+        </div>
+        <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-500 transition-colors">${project.title}</h3>
+            <p class="text-slate-400 mb-8 line-clamp-2">${project.description}</p>
+            <div class="flex items-center justify-between pt-6 border-t border-slate-800">
+                <a href="${project.calLink}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white font-medium hover:text-blue-500 transition-colors">
+                    <i data-lucide="calendar" size="18"></i> Prendre RDV
+                </a>
+                <button class="p-2 bg-slate-800 rounded-full text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                    <i data-lucide="external-link" size="18"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    projectsGrid.appendChild(card);
+    observer.observe(card);
+
+    // Footer links
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#${project.id}" class="text-slate-400 hover:text-blue-500 transition-colors">${project.title}</a>`;
+    footerProjects.appendChild(li);
+});
+
+// Render Coworking
+const coworkingGrid = document.getElementById('coworking-grid');
+COWORKING_SPACES.forEach((space, index) => {
+    const card = document.createElement('div');
+    card.className = `bg-slate-900 p-10 rounded-3xl border border-slate-800 hover:border-blue-500/30 transition-all duration-300 shadow-xl relative overflow-hidden group reveal-up`;
+    card.style.transitionDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+        <div class="absolute top-4 right-4 bg-blue-600/10 text-blue-500 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Promo</div>
+        <h3 class="text-2xl font-bold text-white mb-6">${space.name}</h3>
+        <div class="mb-8">
+            <span class="text-slate-500 line-through text-lg mr-3">${space.price.toLocaleString()} FCFA</span>
+            <span class="text-3xl font-bold text-white">${space.promoPrice.toLocaleString()} FCFA</span>
+            <span class="text-slate-500 text-sm ml-1">/ jour</span>
+        </div>
+        <ul class="space-y-4 mb-10">
+            ${space.features.map(f => `<li class="flex items-center gap-3 text-slate-400"><i data-lucide="check" size="18" class="text-blue-500"></i> ${f}</li>`).join('')}
+        </ul>
+        <a href="#reservation-form-container" class="block w-full py-4 text-center rounded-2xl font-bold border border-slate-700 text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300">Réserver cet espace</a>
+    `;
+    coworkingGrid.appendChild(card);
+    observer.observe(card);
+});
+
+// Render RDV Tiles
+const rdvGrid = document.getElementById('rdv-grid');
+PROJECTS.forEach((project, index) => {
+    const tile = document.createElement('a');
+    tile.href = project.calLink;
+    tile.target = "_blank";
+    tile.rel = "noopener noreferrer";
+    tile.className = "group relative bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:border-blue-600 hover:bg-blue-600/5 transition-all duration-300 flex flex-col items-center text-center reveal-up";
+    tile.style.transitionDelay = `${index * 0.05}s`;
+    tile.innerHTML = `
+        <div class="w-16 h-16 bg-slate-950 rounded-2xl flex items-center justify-center mb-6 border border-slate-800 group-hover:border-blue-500/50 transition-all">
+            <i data-lucide="calendar" class="text-blue-500" size="28"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-500 transition-colors">${project.title}</h3>
+        <p class="text-slate-500 text-sm mb-6">Réserver un créneau</p>
+        <div class="mt-auto flex items-center gap-2 text-blue-500 font-bold text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+            Cal.com <i data-lucide="arrow-up-right" size="16"></i>
+        </div>
+    `;
+    rdvGrid.appendChild(tile);
+    observer.observe(tile);
+});
+
+// Quiz Logic
+let currentStep = 0;
+let answers = [];
+const quizContainer = document.getElementById('quiz-container');
+
+const renderQuiz = () => {
+    if (currentStep < QUIZ_QUESTIONS.length) {
+        const q = QUIZ_QUESTIONS[currentStep];
+        quizContainer.innerHTML = `
+            <div class="space-y-10 animate-fade-in">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-500 font-medium uppercase tracking-widest text-xs">Question ${currentStep + 1} sur ${QUIZ_QUESTIONS.length}</span>
+                    <div class="flex gap-1">
+                        ${QUIZ_QUESTIONS.map((_, i) => `<div class="h-1.5 w-8 rounded-full transition-all duration-500 ${i <= currentStep ? 'bg-blue-600' : 'bg-slate-800'}"></div>`).join('')}
+                    </div>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">${q.question}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="handleQuizAnswer('${opt}')" class="group flex items-center justify-between p-6 bg-slate-900 border border-slate-800 rounded-2xl text-left text-lg text-slate-300 hover:border-blue-600 hover:bg-blue-600/5 hover:text-white transition-all duration-300">
+                            ${opt} <i data-lucide="arrow-right" size="20" class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    } else {
+        const recommendation = QUIZ_QUESTIONS[answers.length - 1].recommendation;
+        quizContainer.innerHTML = `
+            <div class="text-center space-y-8 py-10 animate-fade-in">
+                <div class="w-24 h-24 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 relative">
+                    <i data-lucide="sparkles" size="48" class="text-blue-500 animate-pulse"></i>
+                    <div class="absolute inset-0 bg-blue-600/10 rounded-full blur-2xl animate-ping"></div>
+                </div>
+                <h3 class="text-4xl font-bold text-white">Votre recommandation</h3>
+                <div class="p-10 bg-slate-900 rounded-3xl border border-blue-500/30 shadow-[0_0_50px_-12px_rgba(37,99,235,0.25)]">
+                    <p class="text-slate-400 text-lg mb-2 uppercase tracking-widest font-semibold">Nous vous suggérons :</p>
+                    <p class="text-5xl font-black text-white tracking-tight">${recommendation}</p>
+                </div>
+                <p class="text-slate-400 text-lg max-w-lg mx-auto">Sur la base de vos réponses, ce service semble être le plus adapté à vos besoins actuels dans l'écosystème Vireel.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center pt-8">
+                    <button class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">En savoir plus</button>
+                    <button onclick="resetQuiz()" class="px-10 py-5 bg-slate-800 text-white rounded-2xl font-bold text-lg hover:bg-slate-700 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="rotate-ccw" size="20"></i> Recommencer
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    lucide.createIcons();
+};
+
+window.handleQuizAnswer = (option) => {
+    answers.push(option);
+    currentStep++;
+    renderQuiz();
+};
+
+window.resetQuiz = () => {
+    currentStep = 0;
+    answers = [];
+    renderQuiz();
+};
+
+renderQuiz();
+
+// Form Handling
+const reservationForm = document.getElementById('reservation-form');
+const successMessage = document.getElementById('success-message');
+
+reservationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = reservationForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<div class="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>`;
+
+    setTimeout(() => {
+        reservationForm.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        reservationForm.reset();
+        
+        setTimeout(() => {
+            successMessage.classList.add('hidden');
+            reservationForm.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `<i data-lucide="send" size="20"></i> Confirmer la réservation`;
+            lucide.createIcons();
+        }, 5000);
+    }, 1500);
+});
+
+// Footer Year
+document.getElementById('year').innerText = new Date().getFullYear();
+
+// Re-create icons for dynamic content
+lucide.createIcons();
