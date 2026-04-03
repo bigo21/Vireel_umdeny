@@ -69,7 +69,7 @@ Ouvrir `https://bigo21.github.io/Vireel_umdeny/` directement dans un navigateur 
 
 | Difficulté | Solution |
 |-----------|----------|
-| Difficile obtention des informations sur Badawo et les espaces de coworking Vireel | Utilisation de données génériques sur le site web |
+| Difficile obtention des informations sur Badawo | Utilisation de données génériques sur le site web |
 | Compteur "1 Milliard+ FCFA" ne peut pas s'animer comme un entier normal | Détection via `data-short` → affichage direct du texte |
 | Formulaire : validation HTML5 native peu esthétique | Validation JavaScript custom avec messages d'erreur stylisés |
 | Quiz : système de scoring équitable sur 5 questions | Matrice de scores pondérés (réponses Q1 = poids 3, Q2 = poids 2, etc.) |
@@ -108,12 +108,16 @@ Ouvrir `https://bigo21.github.io/Vireel_umdeny/` directement dans un navigateur 
 - **Comment y accéder** : L'accès se fait généralement via une inscription sur la plateforme de formation en ligne ou en intégrant le **canal Telegram/WhatsApp dédié** pour recevoir les identifiants d'accès au module de découverte.
 
 ### 5. Espaces au Coworking Vireel
-L'espace Vireel propose trois types d'espaces :
+L'espace Vireel propose trois types d'espaces, situés **Quartier Fouda, Hôtel Mansel — Yaoundé**.
+Contact : 651 14 74 12 / 242 01 46 64 | direction@umdeny.com
 
-| Espace | Surface | Description |
-|--------|---------|-------------|
-| 🪑 Bureau Partagé × 2 | 10 m² | Open space, idéal pour 1 personne |
-| 🚪 Bureau Privé | 22 m² | Bureau fermé pour équipes ou réunions |
+**Services inclus dans tous les espaces :** connexion haut débit illimitée, assistante de direction, sécurité et confort, groupe électrogène.
+
+| Espace | Tarif normal | 🔥 Tarif promo (jusqu'au 30 mars) |
+|--------|-------------|----------------------------------|
+| 🪑 Bureau Partagé | 4 000 XAF/jour | **2 000 XAF/jour** |
+| 🚪 Bureau Dédié | 10 000 XAF/jour | **4 000 XAF/jour** |
+| 🎤 Salle de Réunion | 10 000 XAF/heure | **5 000 XAF/heure** |
 
 ---
 
